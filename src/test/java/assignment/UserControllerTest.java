@@ -39,13 +39,6 @@ public class UserControllerTest {
         final String uri = "http://localhost:8080/assignment/users";
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.getInterceptors().add(new BasicAuthorizationInterceptor("guest", "guest"));
-        //ResponseEntity<? extends ArrayList<User>> responseEntity = restTemplate.getForEntity(uri, (Class<? extends ArrayList<User>>)ArrayList.class);
-       
-        //ResponseEntity< ArrayList<User>> responseEntity = restTemplate.getForEntity(uri, ArrayList<User>.class);
-        
-        //ResponseEntity<? extends ArrayList<User>> responseEntity = restTemplate.getForEntity(uri, (Class<? extends ArrayList<User>>)ArrayList.class);
-
-        //ResponseEntity<ArrayList<User>> res = restTemplate.postForEntity(uri, myDTO, new ParameterizedTypeReference<List<MyObj>>() {});
         ResponseEntity<User[]> responseEntity = restTemplate.getForEntity(uri, User[].class);
         User[] users = responseEntity.getBody();
         MediaType contentType = responseEntity.getHeaders().getContentType();
