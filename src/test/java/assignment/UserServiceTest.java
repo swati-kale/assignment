@@ -19,11 +19,16 @@ import com.uxpsystems.assignment.config.HazelcastCacheConfig;
 import com.uxpsystems.assignment.model.User;
 import com.uxpsystems.assignment.service.UserService;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes= {AppConfig.class ,HazelcastCacheConfig.class},loader=AnnotationConfigContextLoader.class)
 public class UserServiceTest {
-	
+	private static final Logger logger = LoggerFactory.getLogger(UserServiceTest.class);
+
 	@Autowired
 	private UserService userService;
 
@@ -40,7 +45,7 @@ public class UserServiceTest {
 		                     existingUser.getUsername());
 		             assertNotNull("PWD isn't null",
 		                     existingUser.getPassword());
-		             System.out.println("User Found UserName:"+existingUser.getUsername());
+		             logger.debug("User Found UserName:"+existingUser.getUsername());
 		         }
 	  	  
 	  	         assertNotNull("Object is not null", existingUser);
@@ -51,10 +56,10 @@ public class UserServiceTest {
 	 public void testGetUsers() {
 		 List<User> users= userService.list();
 		         if (users != null) {
-		             System.out.println("No of Users Found:"+users.size());
+		        	 logger.debug("No of Users Found:"+users.size());
 		         }
 		         else {
-		        	 System.out.println("Users Not Found.");
+		        	 logger.debug("Users Not Found.");
 		         }
 	  	         assertNotNull("Object is not null", users);
 	  	        
