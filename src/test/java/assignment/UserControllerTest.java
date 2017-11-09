@@ -1,5 +1,6 @@
 package assignment;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,8 +17,12 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.uxpsystems.assignment.model.User; 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class UserControllerTest {
+	
+	private static final Logger logger = LoggerFactory.getLogger(UserControllerTest.class);
 
 	@Test
     public  void getUserById()
@@ -29,7 +34,7 @@ public class UserControllerTest {
         restTemplate.getInterceptors().add(new BasicAuthorizationInterceptor("guest", "guest"));
         
         User user = restTemplate.getForObject(uri, User.class,params);
-		 System.out.println("ID::"+user.getId()+"   UserName ::" +user.getUsername());
+        logger.debug("ID::"+user.getId()+"   UserName ::" +user.getUsername());
     }
     
 @Test
@@ -43,9 +48,9 @@ public class UserControllerTest {
         MediaType contentType = responseEntity.getHeaders().getContentType();
         HttpStatus statusCode = responseEntity.getStatusCode();
         
-       System.out.println("The number of Users Fetched are ::"+users.length);
-       System.out.println("content type is = " + contentType);
-       System.out.println("status code is = " + statusCode);
+        logger.debug("The number of Users Fetched are ::"+users.length);
+        logger.debug("content type is = " + contentType);
+        logger.debug("status code is = " + statusCode);
     }
 	
 	//@Test
@@ -71,7 +76,7 @@ public class UserControllerTest {
 	
 		HttpEntity<String> entity = new HttpEntity<String>(jsonInString,headers);
 		String result = restTemplate.postForObject(uri, entity, String.class);
-		System.out.println(result);
+		logger.debug(result);
 	
 			
 			// User  result = restTemplate.postForObject( uri, user, User.class);
@@ -94,7 +99,9 @@ public class UserControllerTest {
      
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.getInterceptors().add(new BasicAuthorizationInterceptor("guest", "guest"));
-        restTemplate.put ( uri, user, params);    
+        restTemplate.put ( uri, user, params); 
+        logger.debug("Successfully updated user = 2");
+
         
     }
     
@@ -108,11 +115,7 @@ public class UserControllerTest {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.getInterceptors().add(new BasicAuthorizationInterceptor("admin", "admin"));
         restTemplate.delete ( uri, params);
+        logger.debug("Successfully deleted user = 2");
     }
-
-    
-
-    
-
 
 }
