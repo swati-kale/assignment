@@ -5,6 +5,7 @@ Demo example that involves following technologies.
 3. HSQLDB
 4. Maven
 5. Hazelcast
+6. Simple Logging Facade for Java(SL4J)
 
 To execute run following.
 $ mvn clean
@@ -54,6 +55,12 @@ For simplicity, have used in-memory DB - HSQLDB.
 As runtime, have used embedded Tomcat.
 
 -------------------------------------------
+
+Logging: -
+Spring is using by default Jakarta Commons Logging, but in this project I have used Simple Logging Facade for Java (SLF4J).
+I removed the commons-logging by putting it in exclusions in pom.xml, and added dependencies for SLF4J.
+
+--------------------------------------------
 
 Additional things done.
 
