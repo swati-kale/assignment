@@ -95,7 +95,7 @@ public class UserControllerTest {
         params.put("id", "2");
 
      
-        User user = new User(new Long(2), "skale11", "pwd", "Deactivated");
+        User user = new User( Long.valueOf(2), "skale11", "pwd", "Deactivated");
      
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.getInterceptors().add(new BasicAuthorizationInterceptor("guest", "guest"));
