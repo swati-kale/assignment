@@ -1,0 +1,3 @@
+INSERT INTO USER (USERNAME, PASSWORD, STATUS) VALUES ('admin','admin','Activated');
+INSERT INTO USER (USERNAME, PASSWORD, STATUS) VALUES ('guest','guest','Activated');
+INSERT INTO USER (USERNAME, PASSWORD, STATUS) VALUES ('swati','swati','Deactivated');
