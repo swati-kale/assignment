@@ -10,6 +10,9 @@ $ mvn clean
 
 $ mvn tomcat7:run -Duser=sa -Dpassword=""
 
+You can mvn test as well
+$ mvn test -Duser=sa -Dpassword=""
+
 You can use browser to get (not post) results.
 http://localhost:8080/assignment/users
 (user = guest ; password = guest )
