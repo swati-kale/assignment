@@ -21,7 +21,9 @@ http://localhost:8080/assignment/users
 
 It should return 3 entries, unless you have modified SQL scripts, or used POST to add / delete users.
 
-For complete testing, use some REST Client like -> "Advanced REST Client", or Postman, or similar
+For complete testing, use some REST Client like -> "Advanced REST Client", or Postman, or similar.
+
+I have also added UserControllerTest, UserServiceTest and UserDAOTest to perform junit testing.
 
 ------------------------------------------------------------
 
